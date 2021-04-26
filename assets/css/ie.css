@@ -1,3 +1,24 @@
-h1 {
-	color: #000;
+/**
+ * Root Media Query Variables
+ */
+
+/**
+ * Extends
+ */
+.entry-content > *:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+	max-width: 1080px;
+	margin-left: auto;
+	margin-right: auto;
 }
+
+.inner-container > *:not(.entry-content):not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+	max-width: 1080px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Block Alignments */
+
+/**
+ * These selectors set the default max width for content appearing inside a post or page.
+ */

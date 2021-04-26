@@ -1,0 +1,16 @@
+/**
+ * Root Media Query Variables
+ */
+ :root {
+	--responsive--aligndefault-width: 1080px;
+}
+
+
+/**
+ * Extends
+ */
+ %responsive-aligndefault-width {
+	max-width: var(--responsive--aligndefault-width);
+	margin-left: auto;
+    margin-right: auto;
+}
