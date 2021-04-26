@@ -1,0 +1,23 @@
+/* Global Variables */
+
+// Vertical Rhythm Multiplier
+$baseline-unit: 10px;
+
+:root {
+    /* Font Family */
+	--global--font-primary: var("Times New Roman", Times, serif);
+
+    /* Font Size */
+	--global--font-size-base: 1rem; // 16px / 16px
+
+    /* Line Height */
+	--global--line-height-body: 1.6;
+
+    /* Colors */
+    --global--color-primary: #000; /* Body text color, site title, footer text color. */
+	--global--color-background: #fff; /* Mint, default body background */
+
+    /* Spacing */
+	--global--spacing-horizontal: #{2.5 * $baseline-unit}; // 25px
+	--global--spacing-vertical: #{3 * $baseline-unit}; // 30px.
+}

@@ -1,4 +1,31 @@
 <?php
+/**
+ * Functions and definitions
+ *
+ * @link https://developer.wordpress.org/themes/basics/theme-functions/
+ */
+
+if ( ! function_exists( 'themetemplate_setup' ) ) {
+	/**
+	 * Sets up theme defaults and registers support for various WordPress features.
+	 *
+	 * Note that this function is hooked into the after_setup_theme hook, which
+	 * runs before the init hook. The init hook is too late for some features, such
+	 * as indicating support for post thumbnails.
+	 *
+	 * @return void
+	 */
+	function themetemplate_setup() {
+
+		// Add support for Block Styles.
+		add_theme_support( 'wp-block-styles' );
+
+		// Add support for full and wide align images.
+		add_theme_support( 'align-wide' );
+
+	}
+}
+add_action( 'after_setup_theme', 'themetemplate_setup' );
 
 /**
  * Enqueue scripts and styles.

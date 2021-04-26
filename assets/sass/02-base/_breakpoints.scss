@@ -1,8 +1,31 @@
+@use './../01-abstracts/mixins' as mixins;
+
+
+$default_width: 1080px;
+$max_content_width: 1440px;
+
 /**
  * Root Media Query Variables
  */
  :root {
-	--responsive--aligndefault-width: 1080px;
+	--responsive--spacing-horizontal: calc(2 * var(--global--spacing-horizontal));
+	--responsive--aligndefault-width: calc(100vw - var(--responsive--spacing-horizontal));
+	--responsive--alignwide-width: calc(100vw - var(--responsive--spacing-horizontal));
+	--responsive--alignfull-width: 100%;
+}
+
+@include mixins.mq(sm) {
+	:root {
+		--responsive--aligndefault-width: min(calc(100vw - 4 * var(--global--spacing-horizontal)), #{$default_width});
+		--responsive--alignwide-width: calc(100vw - 4 * var(--global--spacing-horizontal));
+	}
+}
+
+@include mixins.mq(xl) {
+	:root {
+		--responsive--aligndefault-width: min(calc(100vw - 8 * var(--global--spacing-horizontal)), #{$default_width});
+		--responsive--alignwide-width: min(calc(100vw - 8 * var(--global--spacing-horizontal)), #{$max_content_width});
+	}
 }
 
 
@@ -13,4 +36,10 @@
 	max-width: var(--responsive--aligndefault-width);
 	margin-left: auto;
     margin-right: auto;
+}
+
+%responsive-alignwide-width {
+	max-width: var(--responsive--alignwide-width);
+	margin-left: auto;
+	margin-right: auto;
 }
