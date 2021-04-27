@@ -12,12 +12,16 @@ $max_content_width: 1440px;
 	--responsive--aligndefault-width: calc(100vw - var(--responsive--spacing-horizontal));
 	--responsive--alignwide-width: calc(100vw - var(--responsive--spacing-horizontal));
 	--responsive--alignfull-width: 100%;
+	--responsive--alignright-margin: var(--global--spacing-horizontal);
+	--responsive--alignleft-margin: var(--global--spacing-horizontal);
 }
 
 @include mixins.mq(sm) {
 	:root {
 		--responsive--aligndefault-width: min(calc(100vw - 4 * var(--global--spacing-horizontal)), #{$default_width});
 		--responsive--alignwide-width: calc(100vw - 4 * var(--global--spacing-horizontal));
+		--responsive--alignright-margin: calc(0.5 * (100vw - var(--responsive--aligndefault-width)));
+		--responsive--alignleft-margin: calc(0.5 * (100vw - var(--responsive--aligndefault-width)));
 	}
 }
 
@@ -42,4 +46,86 @@ $max_content_width: 1440px;
 	max-width: var(--responsive--alignwide-width);
 	margin-left: auto;
 	margin-right: auto;
+}
+
+%responsive-alignfull-width-mobile {
+	max-width: var(--responsive--alignfull-width);
+	width: var(--responsive--alignfull-width);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@include mixins.mq(sm) {
+	%responsive-alignfull-width {
+		max-width: var(--responsive--alignfull-width);
+		width: auto;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+%responsive-alignwide-width-nested {
+	margin-left: auto;
+	margin-right: auto;
+	width: var(--responsive--alignwide-width);
+	max-width: var(--responsive--alignfull-width);
+}
+
+%responsive-alignfull-width-nested {
+	margin-left: auto;
+	margin-right: auto;
+	width: calc(var(--responsive--alignfull-width) - calc(2 * var(--responsive--spacing-horizontal)));
+	max-width: var(--responsive--alignfull-width);
+}
+
+@include mixins.mq(xl) {
+	%responsive-alignfull-width-nested {
+		margin-left: auto;
+		margin-right: auto;
+		width: calc(var(--responsive--alignfull-width) - calc(4 * var(--responsive--spacing-horizontal)));
+		max-width: var(--responsive--alignfull-width);
+	}
+}
+
+%responsive-alignleft {
+	@extend %responsive-aligndefault-width;
+}
+
+@include mixins.mq(sm) {
+	%responsive-alignleft {
+
+		/*rtl:ignore*/
+		margin-left: var(--responsive--alignleft-margin);
+
+		/*rtl:ignore*/
+		margin-right: var(--global--spacing-horizontal);
+	}
+}
+
+%responsive-alignright {
+	@extend %responsive-aligndefault-width;
+}
+
+@include mixins.mq(sm) {
+	%responsive-alignright {
+
+		/*rtl:ignore*/
+		margin-left: var(--global--spacing-horizontal);
+
+		/*rtl:ignore*/
+		margin-right: var(--responsive--alignright-margin);
+	}
+}
+
+// Output
+.default-max-width {
+	@extend %responsive-aligndefault-width;
+}
+
+.wide-max-width {
+	@extend %responsive-alignwide-width;
+}
+
+.full-max-width {
+	@extend %responsive-alignfull-width;
 }
