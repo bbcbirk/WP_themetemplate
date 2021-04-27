@@ -17,6 +17,14 @@ if ( ! function_exists( 'themetemplate_setup' ) ) {
 	 */
 	function themetemplate_setup() {
 
+		register_nav_menus(
+			array(
+				'primary_logged_in' => esc_html__( 'Primary logged in menu', 'themetemplate' ),
+				'primary_logged_out' => esc_html__( 'Primary logged out menu', 'themetemplate' ),
+				'footer'  => __( 'Secondary menu', 'themetemplate' ),
+			)
+		);
+
 		// Add support for Block Styles.
 		add_theme_support( 'wp-block-styles' );
 
